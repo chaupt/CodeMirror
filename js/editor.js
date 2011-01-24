@@ -744,7 +744,8 @@ var Editor = (function(){
     },
 
     reroutePasteEvent: function() {
-      if (this.capturingPaste || window.opera || (gecko && gecko >= 20101026)) return;
+      // 20110122: Webvanta Patch -- add Safari
+      if (this.capturingPaste || window.opera || (gecko && gecko >= 20101026) || safari) return;
       this.capturingPaste = true;
       var te = window.frameElement.CodeMirror.textareaHack;
       var coords = this.cursorCoords(true, true);
